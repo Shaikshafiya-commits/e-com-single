@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Élan Femme — premium women's fashion, thoughtfully curated." />
+  <title>Élan Femme | Women's Fashion</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --ivory:#fbf8f4;
+      --cream:#f3ebe4;
+      --beige:#e6d7ca;
+      --blush:#e9c7c7;
+      --rose:#c98788;
+      --gold:#aa8b5a;
+      --black:#191717;
+      --muted:#756d68;
+      --white:#fff;
+      --border:rgba(25,23,23,.11);
+      --shadow:0 18px 50px rgba(36,24,20,.10);
+      --radius:18px;
+      --max:1240px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Poppins, sans-serif;
+      color:var(--black);
+      background:var(--ivory);
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+    img{display:block;width:100%;object-fit:cover}
+    button,input{font:inherit}
+    button{cursor:pointer}
+    a{color:inherit;text-decoration:none}
+    .container{width:min(var(--max),92%);margin:auto}
+
+    /* Announcement */
+    .announcement{
+      background:var(--black);color:#fff;text-align:center;
+      padding:9px 15px;font-size:.72rem;letter-spacing:.13em;
+      text-transform:uppercase;
+    }
+
+    /* Header */
+    header{
+      position:sticky;top:0;z-index:1000;
+      background:rgba(251,248,244,.94);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid var(--border);
+    }
+    .nav{
+      height:78px;display:flex;align-items:center;justify-content:space-between;gap:25px;
+    }
+    .brand{
+      font-family:"Playfair Display",serif;font-size:1.85rem;letter-spacing:.03em;
+      white-space:nowrap;
+    }
+    .brand span{color:var(--gold)}
+    .nav-links{display:flex;gap:32px;align-items:center;font-size:.83rem}
+    .nav-links a{position:relative;padding:5px 0}
+    .nav-links a::after{
+      content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--black);
+      transition:.3s;
+    }
+    .nav-links a:hover::after{width:100%}
+    .nav-actions{display:flex;gap:8px;align-items:center}
+    .icon-btn{
+      width:42px;height:42px;border:0;background:transparent;border-radius:50%;
+      display:grid;place-items:center;transition:.25s;position:relative;font-size:1.05rem;
+    }
+    .icon-btn:hover{background:var(--cream);transform:translateY(-1px)}
+    .count{
+      position:absolute;right:2px;top:1px;min-width:17px;height:17px;padding:0 4px;
+      border-radius:20px;background:var(--black);color:#fff;font-size:.58rem;
+      display:grid;place-items:center;
+    }
+    .menu-btn{display:none}
+
+    /* Hero */
+    .hero{
+      min-height:calc(100vh - 119px);display:grid;grid-template-columns:1fr 1fr;
+      background:linear-gradient(120deg,#f3e8df,#ead4d0);
+    }
+    .hero-copy{
+      display:flex;flex-direction:column;justify-content:center;
+      padding:70px max(5vw,30px);
+    }
+    .eyebrow{
+      color:var(--gold);font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;
+      margin-bottom:17px;font-weight:600;
+    }
+    h1,h2,h3{font-family:"Playfair Display",serif;font-weight:600;line-height:1.08}
+    h1{font-size:clamp(3.2rem,6vw,6.2rem);max-width:650px}
+    .hero-copy p{
+      color:#5e5550;max-width:500px;margin:25px 0 31px;font-size:.96rem;
+    }
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      border:1px solid var(--black);padding:13px 24px;font-size:.75rem;
+      letter-spacing:.13em;text-transform:uppercase;transition:.3s;width:max-content;
+    }
+    .btn-dark{background:var(--black);color:#fff}
+    .btn-dark:hover{background:transparent;color:var(--black)}
+    .btn-light{background:transparent}
+    .btn-light:hover{background:var(--black);color:#fff}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .hero-image{min-height:560px;position:relative;overflow:hidden}
+    .hero-image img{height:100%;transition:transform 1.2s ease}
+    .hero:hover .hero-image img{transform:scale(1.035)}
+    .hero-label{
+      position:absolute;bottom:30px;left:30px;background:rgba(255,255,255,.86);
+      backdrop-filter:blur(10px);padding:13px 17px;font-size:.68rem;letter-spacing:.13em;
+    }
+
+    /* Trust strip */
+    .trust{
+      background:#fff;border-bottom:1px solid var(--border);
+      display:grid;grid-template-columns:repeat(4,1fr);padding:20px 5%;
+    }
+    .trust-item{text-align:center;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+    .trust-item strong{display:block;color:var(--black);font-size:.75rem;margin-bottom:3px}
+
+    /* Sections */
+    section{padding:90px 0}
+    .section-head{
+      display:flex;align-items:end;justify-content:space-between;gap:25px;margin-bottom:35px
+    }
+    .section-head h2{font-size:clamp(2rem,4vw,3rem)}
+    .section-head p{color:var(--muted);font-size:.85rem;max-width:460px}
+    .section-link{font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;border-bottom:1px solid}
+
+    /* Categories */
+    .categories{background:#fff}
+    .category-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .category{position:relative;overflow:hidden;height:390px;background:var(--cream)}
+    .category img{height:100%;transition:.7s}
+    .category:hover img{transform:scale(1.06)}
+    .category::after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.5))}
+    .category-content{position:absolute;z-index:2;bottom:23px;left:23px;color:#fff}
+    .category-content h3{font-size:1.6rem;margin-bottom:4px}
+    .category-content span{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase}
+
+    /* Products */
+    .shop-tools{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:28px}
+    .filters{display:flex;gap:8px;flex-wrap:wrap}
+    .filter{
+      background:transparent;border:1px solid var(--border);padding:9px 15px;
+      border-radius:30px;font-size:.7rem;transition:.25s;
+    }
+    .filter:hover,.filter.active{background:var(--black);color:#fff;border-color:var(--black)}
+    .search{
+      width:230px;border:0;border-bottom:1px solid var(--border);background:transparent;
+      padding:9px 4px;outline:none;font-size:.78rem;
+    }
+    .search:focus{border-color:var(--black)}
+    .product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:25px}
+    .product{min-width:0;animation:fadeUp .55s both}
+    .product-image{position:relative;overflow:hidden;background:var(--cream);aspect-ratio:3/4}
+    .product-image img{height:100%;transition:.65s}
+    .product:hover .product-image img{transform:scale(1.045)}
+    .badge{
+      position:absolute;left:12px;top:12px;background:#fff;padding:6px 9px;
+      font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;z-index:2;
+    }
+    .wishlist{
+      position:absolute;right:12px;top:12px;border:0;background:rgba(255,255,255,.9);
+      width:36px;height:36px;border-radius:50%;z-index:2;transition:.25s;
+    }
+    .wishlist.active{background:var(--black);color:#fff}
+    .quick{
+      position:absolute;left:12px;right:12px;bottom:12px;border:0;background:#fff;
+      padding:11px;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;
+      transform:translateY(60px);opacity:0;transition:.3s;
+    }
+    .product:hover .quick{transform:translateY(0);opacity:1}
+    .product-info{padding:14px 2px}
+    .product-name{font-family:"Playfair Display",serif;font-size:1.05rem}
+    .product-meta{display:flex;justify-content:space-between;gap:10px;margin-top:5px}
+    .product-cat{font-size:.67rem;color:var(--muted)}
+    .price{font-size:.78rem;font-weight:600}
+    .stars{font-size:.66rem;color:var(--gold);margin-top:5px}
+    .no-results{grid-column:1/-1;text-align:center;padding:50px;color:var(--muted)}
+
+    /* Editorial */
+    .editorial{
+      background:var(--cream);display:grid;grid-template-columns:1.05fr .95fr;
+      min-height:600px;
+    }
+    .editorial-image{min-height:600px}
+    .editorial-image img{height:100%}
+    .editorial-copy{display:flex;justify-content:center;flex-direction:column;padding:70px 9%}
+    .editorial-copy h2{font-size:clamp(2.4rem,4vw,4.2rem);margin-bottom:22px}
+    .editorial-copy p{color:var(--muted);max-width:480px;font-size:.88rem;margin-bottom:28px}
+
+    /* Newsletter */
+    .newsletter{
+      background:var(--black);color:#fff;text-align:center;padding:90px 20px;
+    }
+    .newsletter h2{font-size:clamp(2rem,4vw,3.4rem)}
+    .newsletter p{color:#bbb;max-width:550px;margin:15px auto 28px;font-size:.82rem}
+    .newsletter-form{display:flex;max-width:500px;margin:auto;border-bottom:1px solid #777}
+    .newsletter-form input{flex:1;border:0;background:transparent;color:#fff;padding:13px 4px;outline:0}
+    .newsletter-form button{border:0;background:transparent;color:#fff;text-transform:uppercase;letter-spacing:.12em;font-size:.68rem}
+
+    /* Footer */
+    footer{background:#111;color:#ddd;padding:60px 0 25px}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:45px;padding-bottom:45px}
+    footer .brand{color:#fff}
+    footer p{color:#999;font-size:.75rem;max-width:300px;margin-top:15px}
+    footer h4{font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:15px}
+    footer ul{list-style:none;display:grid;gap:8px;color:#aaa;font-size:.74rem}
+    footer li a:hover{color:#fff}
+    .copyright{border-top:1px solid #292929;padding-top:20px;color:#777;font-size:.65rem;display:flex;justify-content:space-between;gap:20px}
+
+    /* Cart */
+    .overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);opacity:0;visibility:hidden;transition:.3s;z-index:1100}
+    .overlay.show{opacity:1;visibility:visible}
+    .cart{
+      position:fixed;right:0;top:0;height:100%;width:min(430px,92vw);background:var(--ivory);
+      z-index:1200;transform:translateX(100%);transition:.4s;display:flex;flex-direction:column;
+      box-shadow:-20px 0 60px rgba(0,0,0,.12)
+    }
+    .cart.open{transform:translateX(0)}
+    .cart-head{display:flex;justify-content:space-between;align-items:center;padding:22px;border-bottom:1px solid var(--border)}
+    .cart-head h3{font-size:1.6rem}
+    .cart-items{flex:1;overflow:auto;padding:18px}
+    .cart-item{display:grid;grid-template-columns:75px 1fr auto;gap:12px;padding:14px 0;border-bottom:1px solid var(--border)}
+    .cart-item img{width:75px;height:95px}
+    .cart-item h4{font-family:"Playfair Display",serif;font-size:.95rem}
+    .cart-item p{font-size:.7rem;color:var(--muted)}
+    .remove{border:0;background:none;font-size:.7rem;color:var(--muted)}
+    .cart-bottom{padding:20px;border-top:1px solid var(--border);background:#fff}
+    .subtotal{display:flex;justify-content:space-between;font-size:.82rem;margin-bottom:15px}
+    .checkout{width:100%;border:0;background:var(--black);color:#fff;padding:14px;text-transform:uppercase;letter-spacing:.12em;font-size:.68rem}
+    .empty{text-align:center;padding:60px 20px;color:var(--muted);font-size:.8rem}
+
+    /* Modal */
+    .modal{
+      position:fixed;inset:0;z-index:1300;display:grid;place-items:center;padding:20px;
+      opacity:0;visibility:hidden;transition:.3s;background:rgba(0,0,0,.45)
+    }
+    .modal.show{opacity:1;visibility:visible}
+    .modal-card{
+      width:min(820px,96vw);max-height:90vh;overflow:auto;background:var(--ivory);
+      display:grid;grid-template-columns:1fr 1fr;position:relative;transform:translateY(20px);
+      transition:.35s
+    }
+    .modal.show .modal-card{transform:none}
+    .modal-image{min-height:560px}
+    .modal-image img{height:100%}
+    .modal-content{padding:55px 40px;display:flex;justify-content:center;flex-direction:column}
+    .modal-content h2{font-size:2.4rem;margin:8px 0}
+    .modal-content .price{font-size:1rem}
+    .modal-content p{color:var(--muted);font-size:.8rem;margin:18px 0 25px}
+    .close{
+      position:absolute;right:14px;top:12px;width:38px;height:38px;border:0;
+      background:#fff;border-radius:50%;z-index:2
+    }
+    .size-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:9px}
+    .sizes{display:flex;gap:7px;margin-bottom:22px}
+    .size{border:1px solid var(--border);background:transparent;padding:8px 13px;font-size:.7rem}
+    .size.active{background:var(--black);color:#fff}
+
+    .toast{
+      position:fixed;left:50%;bottom:25px;transform:translate(-50%,20px);
+      background:var(--black);color:#fff;padding:12px 18px;font-size:.7rem;z-index:2000;
+      opacity:0;visibility:hidden;transition:.3s;white-space:nowrap
+    }
+    .toast.show{opacity:1;visibility:visible;transform:translate(-50%,0)}
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:none}}
+
+    /* Responsive */
+    @media(max-width:1000px){
+      .nav-links{gap:18px}
+      .product-grid{grid-template-columns:repeat(3,1fr)}
+      .category-grid{grid-template-columns:repeat(2,1fr)}
+      .category{height:330px}
+      .footer-grid{grid-template-columns:2fr 1fr 1fr}
+    }
+    @media(max-width:760px){
+      .nav{height:68px}
+      .menu-btn{display:grid}
+      .nav-links{
+        position:absolute;left:0;right:0;top:68px;background:var(--ivory);
+        border-bottom:1px solid var(--border);padding:20px;display:none;flex-direction:column;
+        align-items:flex-start;gap:15px
+      }
+      .nav-links.open{display:flex}
+      .hero{grid-template-columns:1fr}
+      .hero-copy{padding:70px 6%;order:2}
+      .hero-image{min-height:70vh;order:1}
+      .trust{grid-template-columns:repeat(2,1fr);gap:18px}
+      section{padding:65px 0}
+      .section-head{align-items:flex-start;flex-direction:column}
+      .shop-tools{align-items:flex-start;flex-direction:column}
+      .search{width:100%}
+      .product-grid{grid-template-columns:repeat(2,1fr);gap:17px}
+      .quick{display:none}
+      .editorial{grid-template-columns:1fr}
+      .editorial-image{min-height:70vh}
+      .editorial-copy{padding:55px 8%}
+      .footer-grid{grid-template-columns:1fr 1fr;gap:35px}
+      .footer-grid>div:first-child{grid-column:1/-1}
+      .copyright{flex-direction:column}
+      .modal-card{grid-template-columns:1fr}
+      .modal-image{min-height:430px;max-height:55vh}
+      .modal-content{padding:35px 25px}
+    }
+    @media(max-width:480px){
+      .brand{font-size:1.5rem}
+      .nav-actions .icon-btn:first-child{display:none}
+      h1{font-size:3rem}
+      .hero-image{min-height:60vh}
+      .category-grid{grid-template-columns:1fr 1fr;gap:9px}
+      .category{height:250px}
+      .category-content{left:14px;bottom:14px}
+      .category-content h3{font-size:1.2rem}
+      .product-grid{gap:13px}
+      .product-name{font-size:.93rem}
+      .footer-grid{grid-template-columns:1fr 1fr}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="announcement">Complimentary shipping on orders over ₹2,500 · New season, new mood</div>
+
+  <header>
+    <div class="container nav">
+      <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+
+      <a class="brand" href="#home">Élan <span>Femme</span></a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#new">New In</a>
+        <a href="#shop">Shop</a>
+        <a href="#story">Our Story</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-btn" id="searchBtn" aria-label="Search">⌕</button>
+        <button class="icon-btn" id="wishlistBtn" aria-label="Wishlist">♡<span class="count" id="wishCount">0</span></button>
+        <button class="icon-btn" id="cartBtn" aria-label="Cart">👜<span class="count" id="cartCount">0</span></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <div class="eyebrow">The autumn edit · 2026</div>
+        <h1>Elegance, in every version of you.</h1>
+        <p>Thoughtfully designed womenswear for slow mornings, golden evenings, and every beautiful moment in between.</p>
+        <div class="hero-actions">
+          <a class="btn btn-dark" href="#shop">Shop collection</a>
+          <a class="btn btn-light" href="#story">Discover Élan</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1200&q=85" alt="Woman wearing an elegant neutral fashion look">
+        <div class="hero-label">Quiet luxury · Everyday femininity</div>
+      </div>
+    </section>
+
+    <div class="trust">
+      <div class="trust-item"><strong>Free shipping</strong>On orders over ₹2,500</div>
+      <div class="trust-item"><strong>Easy returns</strong>14-day return window</div>
+      <div class="trust-item"><strong>Secure checkout</strong>Protected payments</div>
+      <div class="trust-item"><strong>Made to last</strong>Thoughtful quality</div>
+    </div>
+
+    <section class="categories" id="new">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Explore the edit</div>
+            <h2>Made for your mood</h2>
+          </div>
+          <p>From polished tailoring to soft silhouettes, find pieces that feel unmistakably yours.</p>
+        </div>
+
+        <div class="category-grid">
+          <a class="category" href="#shop" data-category-link="Dresses">
+            <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=800&q=85" alt="Elegant women's dress">
+            <div class="category-content"><h3>Dresses</h3><span>Explore edit →</span></div>
+          </a>
+          <a class="category" href="#shop" data-category-link="Tops">
+            <img src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=800&q=85" alt="Women's fashion top">
+            <div class="category-content"><h3>Tops</h3><span>Explore edit →</span></div>
+          </a>
+          <a class="category" href="#shop" data-category-link="Outerwear">
+            <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=85" alt="Women's tailored outerwear">
+            <div class="category-content"><h3>Outerwear</h3><span>Explore edit →</span></div>
+          </a>
+          <a class="category" href="#shop" data-category-link="Accessories">
+            <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=85" alt="Women's fashion accessories and styling">
+            <div class="category-content"><h3>Accessories</h3><span>Explore edit →</span></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="shop">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Curated for you</div>
+            <h2>New season essentials</h2>
+          </div>
+          <a class="section-link" href="#shop">View all</a>
+        </div>
+
+        <div class="shop-tools">
+          <div class="filters" id="filters">
+            <button class="filter active" data-filter="All">All</button>
+            <button class="filter" data-filter="Dresses">Dresses</button>
+            <button class="filter" data-filter="Tops">Tops</button>
+            <button class="filter" data-filter="Outerwear">Outerwear</button>
+            <button class="filter" data-filter="Bottoms">Bottoms</button>
+            <button class="filter" data-filter="Accessories">Accessories</button>
+          </div>
+          <input class="search" id="searchInput" type="search" placeholder="Search pieces..." aria-label="Search products">
+        </div>
+
+        <div class="product-grid" id="productGrid"></div>
+      </div>
+    </section>
+
+    <section class="editorial" id="story">
+      <div class="editorial-image">
+        <img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=1200&q=85" alt="Woman in refined neutral fashion">
+      </div>
+      <div class="editorial-copy">
+        <div class="eyebrow">The Élan philosophy</div>
+        <h2>Less, but better.</h2>
+        <p>Élan Femme is built around effortless femininity: timeless silhouettes, considered details, and pieces designed to live beyond a single season.</p>
+        <a href="#shop" class="btn btn-dark">Shop the philosophy</a>
+      </div>
+    </section>
+
+    <section class="newsletter" id="contact">
+      <div class="eyebrow">A little something beautiful</div>
+      <h2>Join the Élan circle</h2>
+      <p>Sign up for first access to new collections, private edits, and thoughtful style notes.</p>
+      <form class="newsletter-form" id="newsletterForm">
+        <input type="email" id="emailInput" placeholder="Your email address" required aria-label="Email address">
+        <button type="submit">Subscribe →</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="#home">Élan <span>Femme</span></a>
+          <p>Modern femininity, thoughtfully curated. Premium womenswear for the way you live now.</p>
+        </div>
+        <div>
+          <h4>Shop</h4>
+          <ul><li><a href="#shop">New In</a></li><li><a href="#shop">Dresses</a></li><li><a href="#shop">Tops</a></li><li><a href="#shop">Accessories</a></li></ul>
+        </div>
+        <div>
+          <h4>Help</h4>
+          <ul><li><a href="#">Shipping</a></li><li><a href="#">Returns</a></li><li><a href="#">Size Guide</a></li><li><a href="#">Contact</a></li></ul>
+        </div>
+        <div>
+          <h4>Follow</h4>
+          <ul><li><a href="#">Instagram</a></li><li><a href="#">Pinterest</a></li><li><a href="#">Facebook</a></li><li><a href="#">TikTok</a></li></ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <span>© 2026 Élan Femme. All rights reserved.</span>
+        <span>Designed with intention · Made for modern women</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="overlay" id="overlay"></div>
+
+  <aside class="cart" id="cartPanel" aria-label="Shopping cart">
+    <div class="cart-head">
+      <h3>Your bag</h3>
+      <button class="icon-btn" id="closeCart">×</button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-bottom">
+      <div class="subtotal"><span>Subtotal</span><strong id="subtotal">₹0</strong></div>
+      <button class="checkout" id="checkoutBtn">Proceed to checkout</button>
+    </div>
+  </aside>
+
+  <div class="modal" id="productModal">
+    <div class="modal-card">
+      <button class="close" id="closeModal">×</button>
+      <div class="modal-image"><img id="modalImage" src="" alt=""></div>
+      <div class="modal-content">
+        <div class="eyebrow" id="modalCategory"></div>
+        <h2 id="modalName"></h2>
+        <div class="price" id="modalPrice"></div>
+        <div class="stars">★★★★★ <span style="color:#756d68"> · 4.9</span></div>
+        <p id="modalDescription"></p>
+        <div class="size-label">Select size</div>
+        <div class="sizes" id="sizes">
+          <button class="size">XS</button><button class="size active">S</button>
+          <button class="size">M</button><button class="size">L</button><button class="size">XL</button>
+        </div>
+        <button class="btn btn-dark" id="modalAdd">Add to bag</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const products = [
+      {id:1,name:"Satin Muse Dress",category:"Dresses",price:3490,badge:"New",rating:5,
+       image:"https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=800&q=85",
+       description:"A softly draped satin dress with a graceful silhouette, designed for dinners, celebrations and evenings that deserve a little more."},
+      {id:2,name:"The Linen Blazer",category:"Outerwear",price:4290,badge:"Bestseller",rating:5,
+       image:"https://images.unsplash.com/photo-1591369822096-ffd140ec948f?auto=format&fit=crop&w=800&q=85",
+       description:"A relaxed tailored blazer in an elegant neutral tone. Layer it over dresses, denim or refined separates."},
+      {id:3,name:"Silk Bow Blouse",category:"Tops",price:2490,badge:"New",rating:5,
+       image:"https://images.unsplash.com/photo-1564257577054-9e7c1b2f1e7b?auto=format&fit=crop&w=800&q=85",
+       description:"A feminine blouse with a soft bow detail and fluid shape, made to move effortlessly from desk to dinner."},
+      {id:4,name:"Soft Tailored Trousers",category:"Bottoms",price:2890,badge:"",rating:5,
+       image:"https://images.unsplash.com/photo-1506629905607-d9c297d3f20b?auto=format&fit=crop&w=800&q=85",
+       description:"Clean lines and a softly structured fit make these trousers a timeless foundation for your wardrobe."},
+      {id:5,name:"Rose Knit Cardigan",category:"Tops",price:2190,badge:"Limited",rating:5,
+       image:"https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=800&q=85",
+       description:"A delicate knit cardigan in a muted blush shade, finished with elegant buttons and a softly feminine fit."},
+      {id:6,name:"Classic Trench Coat",category:"Outerwear",price:4990,badge:"Icon",rating:5,
+       image:"https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800&q=85",
+       description:"An enduring trench with a polished shape, understated hardware and enough ease for everyday layering."},
+      {id:7,name:"Ivory Column Dress",category:"Dresses",price:3790,badge:"New",rating:5,
+       image:"https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=85",
+       description:"A clean column silhouette with elegant movement. Minimal, refined and made for memorable occasions."},
+      {id:8,name:"Mini Shoulder Bag",category:"Accessories",price:1990,badge:"",rating:5,
+       image:"https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=800&q=85",
+       description:"A compact everyday bag with a polished shape and just enough room for the essentials."},
+      {id:9,name:"Gold Sculpted Hoops",category:"Accessories",price:890,badge:"New",rating:5,
+       image:"https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=800&q=85",
+       description:"Sculptural hoops with a soft golden finish, designed to add understated polish to any look."},
+      {id:10,name:"Blush Wrap Skirt",category:"Bottoms",price:2290,badge:"",rating:5,
+       image:"https://images.unsplash.com/photo-1583496661160-fb5886a13d77?auto=format&fit=crop&w=800&q=85",
+       description:"A graceful wrap skirt with an easy fit and feminine movement, perfect with knits and crisp shirts."},
+      {id:11,name:"Pearl Evening Top",category:"Tops",price:2690,badge:"Limited",rating:5,
+       image:"https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=800&q=85",
+       description:"An elevated evening top with delicate detailing for understated glamour after dark."},
+      {id:12,name:"Suede Mini Bag",category:"Accessories",price:2390,badge:"Bestseller",rating:5,
+       image:"https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=800&q=85",
+       description:"A softly structured suede-inspired mini bag with a refined finish and versatile styling."}
+    ];
+
+    let currentFilter = "All";
+    let searchTerm = "";
+    let cart = JSON.parse(localStorage.getItem("elanCart") || "[]");
+    let wishlist = JSON.parse(localStorage.getItem("elanWishlist") || "[]");
+    let modalProduct = null;
+
+    const $ = s => document.querySelector(s);
+    const $$ = s => document.querySelectorAll(s);
+
+    function money(n){ return "₹" + n.toLocaleString("en-IN"); }
+
+    function renderProducts(){
+      const grid = $("#productGrid");
+      const filtered = products.filter(p =>
+        (currentFilter === "All" || p.category === currentFilter) &&
+        (p.name.toLowerCase().includes(searchTerm) || p.category.toLowerCase().includes(searchTerm))
+      );
+
+      if(!filtered.length){
+        grid.innerHTML = '<div class="no-results">No pieces found. Try another search.</div>';
+        return;
+      }
+
+      grid.innerHTML = filtered.map((p,i) => `
+        <article class="product" style="animation-delay:${i*45}ms">
+          <div class="product-image">
+            ${p.badge ? `<span class="badge">${p.badge}</span>` : ""}
+            <button class="wishlist ${wishlist.includes(p.id) ? "active" : ""}" data-wish="${p.id}" aria-label="Add to wishlist">
+              ${wishlist.includes(p.id) ? "♥" : "♡"}
+            </button>
+            <img src="${p.image}" alt="${p.name}" loading="lazy">
+            <button class="quick" data-quick="${p.id}">Quick view</button>
+          </div>
+          <div class="product-info">
+            <div class="product-name">${p.name}</div>
+            <div class="product-meta"><span class="product-cat">${p.category}</span><span class="price">${money(p.price)}</span></div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </article>
+      `).join("");
+
+      $$("[data-wish]").forEach(btn => btn.addEventListener("click", e => {
+        e.stopPropagation();
+        toggleWishlist(Number(btn.dataset.wish));
+      }));
+      $$("[data-quick]").forEach(btn => btn.addEventListener("click", () => openModal(Number(btn.dataset.quick))));
+    }
+
+    function toggleWishlist(id){
+      wishlist = wishlist.includes(id) ? wishlist.filter(x=>x!==id) : [...wishlist,id];
+      localStorage.setItem("elanWishlist", JSON.stringify(wishlist));
+      updateCounts();
+      renderProducts();
+      toast(wishlist.includes(id) ? "Added to wishlist" : "Removed from wishlist");
+    }
+
+    function addToCart(id){
+      const item = products.find(p=>p.id===id);
+      const existing = cart.find(x=>x.id===id);
+      if(existing) existing.qty++;
+      else cart.push({...item,qty:1});
+      localStorage.setItem("elanCart", JSON.stringify(cart));
+      updateCounts();
+      renderCart();
+      toast(`${item.name} added to your bag`);
+    }
+
+    function removeFromCart(id){
+      cart = cart.filter(x=>x.id!==id);
+      localStorage.setItem("elanCart", JSON.stringify(cart));
+      updateCounts();
+      renderCart();
+    }
+
+    function renderCart(){
+      const area = $("#cartItems");
+      if(!cart.length){
+        area.innerHTML = '<div class="empty">Your bag is waiting for something beautiful.</div>';
+      } else {
+        area.innerHTML = cart.map(item => `
+          <div class="cart-item">
+            <img src="${item.image}" alt="${item.name}">
+            <div><h4>${item.name}</h4><p>${item.category} · Qty ${item.qty}</p><strong>${money(item.price*item.qty)}</strong></div>
+            <button class="remove" data-remove="${item.id}">Remove</button>
+          </div>
+        `).join("");
+        $$("[data-remove]").forEach(btn => btn.addEventListener("click",()=>removeFromCart(Number(btn.dataset.remove))));
+      }
+      $("#subtotal").textContent = money(cart.reduce((sum,i)=>sum+i.price*i.qty,0));
+    }
+
+    function updateCounts(){
+      $("#cartCount").textContent = cart.reduce((sum,i)=>sum+i.qty,0);
+      $("#wishCount").textContent = wishlist.length;
+    }
+
+    function openCart(){
+      $("#cartPanel").classList.add("open");
+      $("#overlay").classList.add("show");
+    }
+    function closeCart(){
+      $("#cartPanel").classList.remove("open");
+      $("#overlay").classList.remove("show");
+    }
+
+    function openModal(id){
+      modalProduct = products.find(p=>p.id===id);
+      $("#modalImage").src = modalProduct.image;
+      $("#modalImage").alt = modalProduct.name;
+      $("#modalCategory").textContent = modalProduct.category;
+      $("#modalName").textContent = modalProduct.name;
+      $("#modalPrice").textContent = money(modalProduct.price);
+      $("#modalDescription").textContent = modalProduct.description;
+      $("#productModal").classList.add("show");
+      document.body.style.overflow="hidden";
+    }
+    function closeModal(){
+      $("#productModal").classList.remove("show");
+      document.body.style.overflow="";
+    }
+
+    let toastTimer;
+    function toast(message){
+      const el=$("#toast");
+      el.textContent=message;el.classList.add("show");
+      clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove("show"),2200);
+    }
+
+    $("#filters").addEventListener("click", e=>{
+      const btn=e.target.closest(".filter"); if(!btn)return;
+      currentFilter=btn.dataset.filter;
+      $$(".filter").forEach(x=>x.classList.remove("active"));
+      btn.classList.add("active");
+      renderProducts();
+    });
+
+    $("#searchInput").addEventListener("input",e=>{
+      searchTerm=e.target.value.trim().toLowerCase();
+      renderProducts();
+    });
+
+    $("#searchBtn").addEventListener("click",()=>{
+      document.querySelector("#shop").scrollIntoView({behavior:"smooth"});
+      setTimeout(()=>$("#searchInput").focus(),450);
+    });
+
+    $("#cartBtn").addEventListener("click",openCart);
+    $("#closeCart").addEventListener("click",closeCart);
+    $("#overlay").addEventListener("click",closeCart);
+
+    $("#closeModal").addEventListener("click",closeModal);
+    $("#productModal").addEventListener("click",e=>{if(e.target.id==="productModal")closeModal()});
+    $("#modalAdd").addEventListener("click",()=>{
+      if(modalProduct){addToCart(modalProduct.id);closeModal();openCart();}
+    });
+
+    $$("#sizes .size").forEach(btn=>btn.addEventListener("click",()=>{
+      $$("#sizes .size").forEach(x=>x.classList.remove("active"));btn.classList.add("active");
+    }));
+
+    $("#menuBtn").addEventListener("click",()=>$("#navLinks").classList.toggle("open"));
+    $$("#navLinks a").forEach(a=>a.addEventListener("click",()=>$("#navLinks").classList.remove("open")));
+
+    $$(".category").forEach(card=>card.addEventListener("click",()=>{
+      currentFilter=card.dataset.categoryLink;
+      $$(".filter").forEach(x=>x.classList.toggle("active",x.dataset.filter===currentFilter));
+    }));
+
+    $("#wishlistBtn").addEventListener("click",()=>{
+      currentFilter="All";searchTerm="";
+      $("#searchInput").value="";
+      renderProducts();
+      document.querySelector("#shop").scrollIntoView({behavior:"smooth"});
+      toast(wishlist.length ? `${wishlist.length} saved piece${wishlist.length>1?"s":""} in your wishlist` : "Your wishlist is empty");
+    });
+
+    $("#newsletterForm").addEventListener("submit",e=>{
+      e.preventDefault();
+      const email=$("#emailInput").value.trim();
+      if(email){toast("Welcome to the Élan circle ✦");$("#emailInput").value="";}
+    });
+
+    $("#checkoutBtn").addEventListener("click",()=>{
+      if(!cart.length){toast("Your bag is empty");return;}
+      toast("Demo checkout — connect your payment gateway to go live.");
+    });
+
+    renderProducts();
+    renderCart();
+    updateCounts();
+  </script>
+</body>
+</html>
+'''
+
